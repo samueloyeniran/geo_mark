@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:geo_mark/components/myTextField.dart';
 import 'package:geo_mark/signinPage.dart';
 import 'package:geo_mark/splashScreen.dart';
 
 class Registerpage extends StatelessWidget {
-  const Registerpage({super.key});
+  Registerpage({super.key});
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -100,66 +105,32 @@ class Registerpage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 10),
-                          SizedBox(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: "NAME",
-                                labelText: "ENTER YOUR NAME",
-                                hintStyle: TextStyle(fontSize: 15),
-                                prefixIcon: Icon(Icons.person),
-                                enabledBorder: OutlineInputBorder(),
-                              ),
-                            ),
+                          Mytextfield(
+                            controller: nameController,
+                            hintText: "NAME",
+                            obscureText: false,
+                            icon: Icons.person,
                           ),
                           SizedBox(height: 20),
-                          SizedBox(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: "EMAIL",
-                                labelText: "ENTER YOUR EMAIL",
-                                hintStyle: TextStyle(fontSize: 15),
-                                prefixIcon: Icon(Icons.email),
-                                enabledBorder: OutlineInputBorder(),
-                              ),
-                            ),
+                          Mytextfield(
+                            controller: emailController,
+                            hintText: "EMAIL",
+                            obscureText: false,
+                            icon: Icons.email,
                           ),
                           SizedBox(height: 20),
-                          SizedBox(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: "PASSWORD",
-                                labelText: "CREATE A PASSWORD",
-                                hintStyle: TextStyle(fontSize: 15),
-                                prefixIcon: Icon(Icons.lock),
-                                suffixIcon: Icon(Icons.remove_red_eye),
-                                enabledBorder: OutlineInputBorder(),
-                              ),
-                            ),
+                          Mytextfield(
+                            controller: passwordController,
+                            hintText: "PASSWORD",
+                            obscureText: true,
+                            icon: Icons.lock,
                           ),
                           SizedBox(height: 20),
-                          SizedBox(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: "PASSWORD",
-                                labelText: "CONFIRM YOUR PASSWORD",
-                                hintStyle: TextStyle(fontSize: 15),
-                                prefixIcon: Icon(Icons.lock),
-                                suffixIcon: Icon(Icons.remove_red_eye),
-                                enabledBorder: OutlineInputBorder(),
-                              ),
-                            ),
+                          Mytextfield(
+                            controller: confirmPasswordController,
+                            hintText: "CONFIRM PASSWORD",
+                            obscureText: true,
+                            icon: Icons.lock,
                           ),
                           SizedBox(height: 20),
                           SizedBox(
@@ -178,11 +149,16 @@ class Registerpage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              child: Text(
-                                "Create Accoount",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
+                              child: SizedBox(
+                                height: 50,
+                                child: Center(
+                                  child: Text(
+                                    "Create Accoount",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -203,7 +179,7 @@ class Registerpage extends StatelessWidget {
                                 onTap: () {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                      builder: (context) => const Signinpage(),
+                                      builder: (context) => Signinpage(),
                                     ),
                                   );
                                 },
